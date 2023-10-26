@@ -14,7 +14,6 @@
 
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import Image1Image from 'src/assets/images/Post_Image.png';
 
 const Post1 = styled('div')({
   backgroundColor: `rgba(255, 255, 255, 1)`,
@@ -32,8 +31,9 @@ const Post1 = styled('div')({
   overflow: `hidden`,
 });
 
-const Image1 = styled('div')({
-  backgroundImage: `url(${Image1Image})`,
+const Image1 = styled('div', {
+  shouldForwardProp: (prop) => !['props'].includes(prop.toString()),
+})(({ props }) => ({
   backgroundPosition: `center`,
   backgroundSize: `cover`,
   backgroundRepeat: `no-repeat`,
@@ -47,7 +47,8 @@ const Image1 = styled('div')({
   alignSelf: `stretch`,
   height: `408px`,
   margin: `0px`,
-});
+  backgroundImage: props.post.image,
+}));
 
 const Content = styled('div')({
   textAlign: `left`,
@@ -69,8 +70,8 @@ const Content = styled('div')({
 function Post(props) {
   return (
     <Post1 className={props.className}>
-      <Image1></Image1>
-      <Content>{`This is a new placeholder. Lorem ipsum.`}</Content>
+      <Image1 props={props}></Image1>
+      <Content>{props.post.content}</Content>
     </Post1>
   );
 }

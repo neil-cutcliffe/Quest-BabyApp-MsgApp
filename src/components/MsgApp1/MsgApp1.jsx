@@ -22,16 +22,16 @@ const TypeQuest = styled('div')({
   border: `1px solid rgba(0, 0, 0, 1)`,
   boxSizing: `border-box`,
   borderRadius: `0px`,
-  display: `flex`,
+  display: `grid`,
   position: `relative`,
   isolation: `isolate`,
-  flexDirection: `row`,
-  width: '100%',
-  height: `896px`,
-  justifyContent: `flex-start`,
-  alignItems: `flex-start`,
+  width: `100%`,
+  height: `auto`,
   padding: `0px`,
   overflow: `hidden`,
+  gridTemplateColumns: `repeat(auto-fit, minmax(414px, 1fr))`,
+  columnGap: `10px`,
+  rowGap: `10px`,
 });
 
 const Post1 = styled(Post)(({ theme }) => ({
@@ -43,7 +43,10 @@ const Post1 = styled(Post)(({ theme }) => ({
 function MsgApp1(props) {
   return (
     <TypeQuest className={props.className}>
-      <Post1 />
+      {props.posts &&
+        props.posts.map((mypost, index) => {
+          return <Post1 key={index} post={props.posts[index]} />;
+        })}
     </TypeQuest>
   );
 }
