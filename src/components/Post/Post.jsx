@@ -58,7 +58,7 @@ const Content = styled('div')({
   fontStyle: `normal`,
   fontFamily: `Inter`,
   fontWeight: `400`,
-  fontSize: `48px`,
+  fontSize: `36px`,
   letterSpacing: `0px`,
   textDecoration: `none`,
   textTransform: `none`,
