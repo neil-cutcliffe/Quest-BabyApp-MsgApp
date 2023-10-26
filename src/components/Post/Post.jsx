@@ -13,6 +13,7 @@
  **********************************************************************/
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 
 const Post1 = styled('div')({
@@ -50,6 +51,11 @@ const Image1 = styled('div', {
   backgroundImage: props.post.image,
 }));
 
+const InternalLink = styled(Link)({
+  textDecoration: `none`,
+  width: `100%`,
+});
+
 const Content = styled('div')({
   textAlign: `left`,
   whiteSpace: `pre-wrap`,
@@ -70,7 +76,9 @@ const Content = styled('div')({
 function Post(props) {
   return (
     <Post1 className={props.className}>
-      <Image1 props={props}></Image1>
+      <InternalLink to="/StandaloneImage">
+        <Image1 props={props}></Image1>
+      </InternalLink>
       <Content>{props.post.content}</Content>
     </Post1>
   );
