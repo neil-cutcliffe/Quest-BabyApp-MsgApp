@@ -73,13 +73,20 @@ const Content = styled('div')({
   margin: `30px 0px 0px 0px`,
 });
 
+const InternalLink1 = styled(Link)({
+  textDecoration: `none`,
+  width: `100%`,
+});
+
 function Post(props) {
   return (
     <Post1 className={props.className}>
-      <InternalLink to="/StandaloneImage">
+      <InternalLink to={props.post.standaloneImage}>
         <Image1 props={props}></Image1>
       </InternalLink>
-      <Content>{props.post.content}</Content>
+      <InternalLink1 to={props.post.standaloneContent}>
+        <Content>{props.post.content}</Content>
+      </InternalLink1>
     </Post1>
   );
 }
