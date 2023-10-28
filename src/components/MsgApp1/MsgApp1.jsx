@@ -22,30 +22,12 @@ const TypeQuest = styled('div')({
   border: `1px solid rgba(0, 0, 0, 1)`,
   boxSizing: `border-box`,
   borderRadius: `0px`,
-  display: `flex`,
+  display: `grid`,
   position: `relative`,
   isolation: `isolate`,
-  flexDirection: `row`,
-  width: '100%',
-  height: `896px`,
-  justifyContent: `flex-start`,
-  alignItems: `flex-start`,
-  padding: `0px`,
-  overflow: `hidden`,
-});
-
-const GridFrame = styled('div')({
-  backgroundColor: `rgba(255, 255, 255, 1)`,
-  borderRadius: `0px`,
-  display: `grid`,
-  position: `absolute`,
-  isolation: `isolate`,
-  padding: `0px`,
-  boxSizing: `border-box`,
   width: `100%`,
   height: `auto`,
-  left: `0px`,
-  top: `0px`,
+  padding: `0px`,
   overflow: `hidden`,
   gridTemplateColumns: `repeat(auto-fit, minmax(414px, 1fr))`,
   columnGap: `10px`,
@@ -63,12 +45,10 @@ const Post1 = styled(Post)(({ theme }) => ({
 function MsgApp1(props) {
   return (
     <TypeQuest className={props.className}>
-      <GridFrame>
-        {props.posts &&
-          props.posts.map((mypost, index) => {
-            return <Post1 key={index} post={props.posts[index]} />;
-          })}
-      </GridFrame>
+      {props.posts &&
+        props.posts.map((mypost, index) => {
+          return <Post1 key={index} post={props.posts[index]} />;
+        })}
     </TypeQuest>
   );
 }
