@@ -13,7 +13,9 @@
  **********************************************************************/
 
 import React from 'react';
+import XImage from 'src/assets/images/StandaloneImage_x.png';
 import { styled } from '@mui/material/styles';
+import useStandaloneImage from 'src/components/StandaloneImage/useStandaloneImage';
 
 const StandaloneImage1 = styled('div')({
   backgroundColor: `rgba(255, 255, 255, 1)`,
@@ -43,6 +45,8 @@ const Image1 = styled('div', {
   flexDirection: `row`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
   height: `896px`,
   width: `414px`,
   margin: `0px`,
@@ -50,10 +54,38 @@ const Image1 = styled('div', {
   backgroundImage: props.post.image,
 }));
 
+const Close = styled('div')({
+  backgroundColor: `rgba(255, 255, 255, 0.2)`,
+  borderRadius: `0px`,
+  display: `flex`,
+  position: `absolute`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `10px`,
+  boxSizing: `border-box`,
+  left: `264px`,
+  top: `20px`,
+  cursor: `pointer`,
+});
+
+const X = styled('img')({
+  height: `107.25px`,
+  width: `105.02px`,
+  margin: `0px`,
+});
+
 function StandaloneImage(props) {
+  const { fns } = useStandaloneImage(props);
+
   return (
     <StandaloneImage1 className={props.className}>
-      <Image1 props={props}></Image1>
+      <Image1 props={props}>
+        <Close onClick={fns.handleCloseButtonClick}>
+          <X src={XImage} loading="lazy" alt={'x'} />
+        </Close>
+      </Image1>
     </StandaloneImage1>
   );
 }
