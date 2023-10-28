@@ -13,10 +13,8 @@
  **********************************************************************/
 
 import React from 'react';
-import PlusImage from 'src/assets/images/MsgApp1_plus.png';
 import { styled } from '@mui/material/styles';
 import Post from 'src/components/Post/Post';
-import useMsgApp1 from 'src/components/MsgApp1/useMsgApp1';
 
 const TypeQuest = styled('div')({
   backgroundColor: `rgba(255, 255, 255, 1)`,
@@ -62,31 +60,7 @@ const Post1 = styled(Post)(({ theme }) => ({
   top: `0px`,
 }));
 
-const New = styled('div')({
-  backgroundColor: `rgba(255, 255, 255, 0.2)`,
-  borderRadius: `0px`,
-  display: `flex`,
-  position: `absolute`,
-  isolation: `isolate`,
-  flexDirection: `row`,
-  justifyContent: `flex-start`,
-  alignItems: `center`,
-  padding: `10px`,
-  boxSizing: `border-box`,
-  left: `268px`,
-  top: `748px`,
-  cursor: `pointer`,
-});
-
-const Plus = styled('img')({
-  height: `128px`,
-  width: `128px`,
-  margin: `0px`,
-});
-
 function MsgApp1(props) {
-  const { fns } = useMsgApp1(props);
-
   return (
     <TypeQuest className={props.className}>
       <GridFrame>
@@ -95,9 +69,6 @@ function MsgApp1(props) {
             return <Post1 key={index} post={props.posts[index]} />;
           })}
       </GridFrame>
-      <New onClick={fns.handleNewButtonClick}>
-        <Plus src={PlusImage} loading="lazy" alt={'plus'} />
-      </New>
     </TypeQuest>
   );
 }
