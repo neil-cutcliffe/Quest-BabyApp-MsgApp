@@ -27,7 +27,7 @@ const Post1 = styled('div')({
   width: '100%',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
-  padding: `10px`,
+  padding: `0px`,
   boxSizing: `border-box`,
   overflow: `hidden`,
 });

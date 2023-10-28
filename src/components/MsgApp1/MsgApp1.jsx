@@ -13,6 +13,7 @@
  **********************************************************************/
 
 import React from 'react';
+import PlusImage from 'src/assets/images/MsgApp1_plus.png';
 import { styled } from '@mui/material/styles';
 import Post from 'src/components/Post/Post';
 
@@ -34,18 +35,65 @@ const TypeQuest = styled('div')({
   rowGap: `10px`,
 });
 
+const Frame1 = styled('div')({
+  backgroundColor: `rgba(255, 255, 255, 1)`,
+  borderRadius: `0px`,
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  width: `414px`,
+  height: `896px`,
+  margin: `0px`,
+  overflow: `hidden`,
+});
+
 const Post1 = styled(Post)(({ theme }) => ({
   width: `414px`,
   height: `700px`,
-  margin: `0px`,
+  position: `absolute`,
+  left: `0px`,
+  top: `0px`,
 }));
+
+const New = styled('div')({
+  backgroundColor: `rgba(255, 255, 255, 0.2)`,
+  borderRadius: `0px`,
+  display: `flex`,
+  position: `absolute`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `10px`,
+  boxSizing: `border-box`,
+  left: `256px`,
+  top: `748px`,
+});
+
+const Plus = styled('img')({
+  height: `128px`,
+  width: `128px`,
+  margin: `0px`,
+});
 
 function MsgApp1(props) {
   return (
     <TypeQuest className={props.className}>
       {props.posts &&
         props.posts.map((mypost, index) => {
-          return <Post1 key={index} post={props.posts[index]} />;
+          return (
+            <Frame1 key={index}>
+              <Post1 post={props.posts[index]} />
+              <New>
+                <Plus src={PlusImage} loading="lazy" alt={'plus'} />
+              </New>
+            </Frame1>
+          );
         })}
     </TypeQuest>
   );
