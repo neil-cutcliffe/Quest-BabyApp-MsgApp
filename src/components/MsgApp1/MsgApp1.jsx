@@ -16,6 +16,7 @@ import React from 'react';
 import PlusImage from 'src/assets/images/MsgApp1_plus.png';
 import { styled } from '@mui/material/styles';
 import Post from 'src/components/Post/Post';
+import useMsgApp1 from 'src/components/MsgApp1/useMsgApp1';
 
 const TypeQuest = styled('div')({
   backgroundColor: `rgba(255, 255, 255, 1)`,
@@ -23,33 +24,34 @@ const TypeQuest = styled('div')({
   border: `1px solid rgba(0, 0, 0, 1)`,
   boxSizing: `border-box`,
   borderRadius: `0px`,
-  display: `grid`,
-  position: `relative`,
-  isolation: `isolate`,
-  width: `100%`,
-  height: `auto`,
-  padding: `0px`,
-  overflow: `hidden`,
-  gridTemplateColumns: `repeat(auto-fit, minmax(414px, 1fr))`,
-  columnGap: `10px`,
-  rowGap: `10px`,
-});
-
-const Frame1 = styled('div')({
-  backgroundColor: `rgba(255, 255, 255, 1)`,
-  borderRadius: `0px`,
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `row`,
+  width: '100%',
+  height: `896px`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
-  boxSizing: `border-box`,
-  width: `414px`,
-  height: `896px`,
-  margin: `0px`,
   overflow: `hidden`,
+});
+
+const GridFrame = styled('div')({
+  backgroundColor: `rgba(255, 255, 255, 1)`,
+  borderRadius: `0px`,
+  display: `grid`,
+  position: `absolute`,
+  isolation: `isolate`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  width: `100%`,
+  height: `auto`,
+  left: `0px`,
+  top: `0px`,
+  overflow: `hidden`,
+  gridTemplateColumns: `repeat(auto-fit, minmax(414px, 1fr))`,
+  columnGap: `10px`,
+  rowGap: `10px`,
 });
 
 const Post1 = styled(Post)(({ theme }) => ({
@@ -71,8 +73,9 @@ const New = styled('div')({
   alignItems: `center`,
   padding: `10px`,
   boxSizing: `border-box`,
-  left: `256px`,
+  left: `268px`,
   top: `748px`,
+  cursor: `pointer`,
 });
 
 const Plus = styled('img')({
@@ -82,19 +85,19 @@ const Plus = styled('img')({
 });
 
 function MsgApp1(props) {
+  const { fns } = useMsgApp1(props);
+
   return (
     <TypeQuest className={props.className}>
-      {props.posts &&
-        props.posts.map((mypost, index) => {
-          return (
-            <Frame1 key={index}>
-              <Post1 post={props.posts[index]} />
-              <New>
-                <Plus src={PlusImage} loading="lazy" alt={'plus'} />
-              </New>
-            </Frame1>
-          );
-        })}
+      <GridFrame>
+        {props.posts &&
+          props.posts.map((mypost, index) => {
+            return <Post1 key={index} post={props.posts[index]} />;
+          })}
+      </GridFrame>
+      <New onClick={fns.handleNewButtonClick}>
+        <Plus src={PlusImage} loading="lazy" alt={'plus'} />
+      </New>
     </TypeQuest>
   );
 }
