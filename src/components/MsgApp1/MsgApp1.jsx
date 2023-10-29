@@ -27,11 +27,11 @@ const TypeQuest = styled('div')({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
-  height: `896px`,
   width: '100%',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
+  height: 'auto',
 });
 
 const GridFrame = styled('div')({
